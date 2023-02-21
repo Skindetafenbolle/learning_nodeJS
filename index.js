@@ -8,9 +8,21 @@
 // console.log(res1,res2)
 
 //lesson 5 - files
+// import fs from 'fs'
+// fs.readFile('some.sh','utf-8', (err,data)=>{
+//     fs.writeFile('some.sh',data + 'Hello World from NodeJS', (err,data) =>{
+//         console.log('congrats');
+//     })
+// })
+
+//lesson 6 - directory's
 import fs from 'fs'
-fs.readFile('some.sh','utf-8', (err,data)=>{
-    fs.writeFile('some.sh',data + 'Hello World from NodeJS', (err,data) =>{
-        console.log('congrats');
+fs.mkdir('text-files', ()=>{
+    fs.writeFile('./text-files/some.sh','Hello', ()=>{
+
     })
+})
+
+fs.unlink('./text-files/some.sh', ()=>{
+    fs.rmdir('./text-files', ()=>{})
 })
