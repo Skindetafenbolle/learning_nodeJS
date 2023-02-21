@@ -16,13 +16,38 @@
 // })
 
 //lesson 6 - directory's
-import fs from 'fs'
-fs.mkdir('text-files', ()=>{
-    fs.writeFile('./text-files/some.sh','Hello', ()=>{
+// import fs from 'fs'
+// fs.mkdir('text-files', ()=>{
+//     fs.writeFile('./text-files/some.sh','Hello', ()=>{
+//
+//     })
+// })
+//
+// fs.unlink('./text-files/some.sh', ()=>{
+//     fs.rmdir('./text-files', ()=>{})
+// })
 
-    })
+// lesson 7 - created server
+import http from "http"
+
+const PORT = 3000
+const HOST = 'localhost'
+let server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
+    res.end
+    (
+        `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>NodeJs</title>
+        </head>
+            <body>
+            Hello Nodejs
+            </body>
+        </html>`
+    )
 })
-
-fs.unlink('./text-files/some.sh', ()=>{
-    fs.rmdir('./text-files', ()=>{})
+server.listen(PORT, HOST, () => {
+    console.log(`Connected to Server`)
 })
