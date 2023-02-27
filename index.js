@@ -29,25 +29,31 @@
 
 // lesson 7 - created server
 import http from "http"
+import fs from 'fs'
 
 const PORT = 3000
 const HOST = 'localhost'
 let server = http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'})
-    res.end
-    (
-        `<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>NodeJs</title>
-        </head>
-            <body>
-            Hello Nodejs
-            </body>
-        </html>`
-    )
+
+    if(req.url === '/'){
+        fs.createReadStream(
+            './templates/index.html'
+        ).pipe(res)
+    }
+    else if (req.url === '/about')
+        fs.createReadStream(
+            './templates/about.html'
+        ).pipe(res)
+    else
+        fs.createReadStream(
+            './templates/error.html'
+        ).pipe(res)
+
+    // const stream = fs.createReadStream('./templates/index.html')
+    // stream.pipe(res)
 })
 server.listen(PORT, HOST, () => {
     console.log(`Connected to Server`)
 })
+
