@@ -2,7 +2,7 @@
   "name": "leaningnodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "templates/index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
